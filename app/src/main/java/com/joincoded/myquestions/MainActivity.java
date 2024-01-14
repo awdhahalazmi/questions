@@ -13,6 +13,8 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView questionTextView, correctTextView, wrongTextView, GradeTextView;
     private Button trueButton, falseButton, nextButton;
+    private  Button restartButton;
+
 
     private ArrayList<String> questions;
     private ArrayList<Boolean> answers;
@@ -25,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         questionTextView = findViewById(R.id.questionTextView);
         correctTextView = findViewById(R.id.correctTextView);
         wrongTextView = findViewById(R.id.WrongTextView);
@@ -33,11 +34,48 @@ public class MainActivity extends AppCompatActivity {
         falseButton = findViewById(R.id.falsee);
         nextButton = findViewById(R.id.nextQ);
         GradeTextView = findViewById(R.id.GradeTextView);
+        restartButton=findViewById(R.id.restart);
+        restartButton.setOnClickListener(view -> restartQuiz());
+        theQuistions();
+    }
 
+    private void displayQuestion() {
+        theSettings();
+    }
 
+    private void checkAnswer(boolean userAnswer) {
+        boolean correctAnswer = answers.get(currentIndex);
+
+        if (userAnswer == correctAnswer) {
+            correctAnsr();
+            theGrade();
+
+        } else {
+            wrongAnsr();
+        }
+    }
+    public void theGrade() {
+        score++;
+        GradeTextView.setText(String.valueOf(score));
+    }
+    public void correctAnsr() {
+        correctTextView.setVisibility(View.VISIBLE);
+        wrongTextView.setVisibility(View.INVISIBLE);
+        trueButton.setVisibility(View.INVISIBLE);
+        falseButton.setVisibility(View.INVISIBLE);
+        nextButton.setVisibility(View.VISIBLE);
+    }
+
+    public void wrongAnsr() {
+        correctTextView.setVisibility(View.INVISIBLE);
+        wrongTextView.setVisibility(View.VISIBLE);
+        trueButton.setVisibility(View.VISIBLE);
+        falseButton.setVisibility(View.VISIBLE);
+        nextButton.setVisibility(View.INVISIBLE);
+    }
+    private void theQuistions() {
         questions = new ArrayList<>();
         answers = new ArrayList<>();
-
 
         questions.add("penguins can fly");
         answers.add(false);
@@ -55,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
         nextButton.setOnClickListener(view -> nextQuestion());
     }
 
-    private void displayQuestion() {
+    private void theSettings() {
         questionTextView.setText(questions.get(currentIndex));
 
         GradeTextView.setText(String.valueOf(score));
@@ -67,31 +105,12 @@ public class MainActivity extends AppCompatActivity {
         falseButton.setVisibility(View.VISIBLE);
     }
 
-    private void checkAnswer(boolean userAnswer) {
-        boolean correctAnswer = answers.get(currentIndex);
-
-        if (userAnswer == correctAnswer) {
-
-            correctTextView.setVisibility(View.VISIBLE);
-            wrongTextView.setVisibility(View.INVISIBLE);
-            trueButton.setVisibility(View.INVISIBLE);
-            falseButton.setVisibility(View.INVISIBLE);
-            nextButton.setVisibility(View.VISIBLE);
-
-            TheGrade();
-        } else {
-
-            correctTextView.setVisibility(View.INVISIBLE);
-            wrongTextView.setVisibility(View.VISIBLE);
-            trueButton.setVisibility(View.VISIBLE);
-            falseButton.setVisibility(View.VISIBLE);
-            nextButton.setVisibility(View.INVISIBLE);
-        }
-    }
-
-    public void TheGrade() {
-        score++;
-        GradeTextView.setText(String.valueOf(score));
+    private void restartQuiz(){
+        currentIndex=0;
+        score=0;
+        displayQuestion();
+        restartButton.setVisibility(View.INVISIBLE);
+        //nextButton.setVisibility(View.VISIBLE);
     }
 
     private void nextQuestion() {
@@ -99,17 +118,9 @@ public class MainActivity extends AppCompatActivity {
         if (currentIndex < questions.size()) {
             displayQuestion();
         } else {
+            nextButton.setVisibility(View.INVISIBLE);
+            restartButton.setVisibility(View.VISIBLE);
 
         }
     }
 }
-
-
-//public class MainActivity extends AppCompatActivity {
-
-//@Override
-//protected void onCreate(Bundle savedInstanceState) {
-//  super.onCreate(savedInstanceState);
-//setContentView(R.layout.activity_main);
-//}
-//}

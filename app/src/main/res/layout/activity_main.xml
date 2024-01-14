@@ -16,10 +16,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.124"
+        app:layout_constraintHorizontal_bias="0.143"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.04" />
+        app:layout_constraintVertical_bias="0.06" />
 
     <Button
         android:id="@+id/truee"
@@ -53,6 +53,7 @@
         android:id="@+id/correctTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:background="@drawable/greencircle"
         android:fallbackLineSpacing="false"
         android:hapticFeedbackEnabled="false"
@@ -76,17 +77,17 @@
         android:layout_width="316dp"
         android:layout_height="78dp"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="228dp"
+        android:layout_marginTop="216dp"
         android:layout_marginEnd="50dp"
         android:text="next question"
         android:visibility="invisible"
         app:layout_constraintBaseline_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/falsee"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.012"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/correctTextView"
-/>
+        app:layout_constraintTop_toBottomOf="@+id/correctTextView" />
+
     <TextView
         android:id="@+id/WrongTextView"
         android:layout_width="wrap_content"
@@ -104,6 +105,7 @@
         app:layout_constraintHorizontal_bias="0.532"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:gravity="center"
 
 
         app:layout_constraintVertical_bias="0.332" />
@@ -124,10 +126,29 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.095"
+        app:layout_constraintHorizontal_bias="0.907"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.121" />
+        app:layout_constraintVertical_bias="0.06" />
+
+
+    <Button
+        android:id="@+id/restart"
+        android:layout_width="316dp"
+        android:layout_height="78dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="216dp"
+        android:layout_marginEnd="50dp"
+        android:text="Restart"
+        android:visibility="invisible"
+        app:layout_constraintBaseline_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/falsee"
+        app:layout_constraintHorizontal_bias="0.012"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/correctTextView" />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
